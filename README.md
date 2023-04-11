@@ -1,6 +1,6 @@
 # GDSercomm
 
-For of [Superwaitsum's repo](https://github.com/Superwaitsum/GDSercomm). Forked to add a `write_raw` function.
+For of [Superwaitsum's repo](https://github.com/Superwaitsum/GDSercomm). Forked to add a `write_raw` function. Also added build scripts `build_...`
 
 GDNative Serial port communication
 
