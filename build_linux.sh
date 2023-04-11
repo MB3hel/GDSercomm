@@ -30,7 +30,7 @@ cp build/config.h include/public/
 cd ..
 
 # Build GDSercomm
-scons p=linuxbsd
+scons p=linux
 
 # Construct release package
 mkdir package

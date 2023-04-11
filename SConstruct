@@ -32,6 +32,7 @@ if platform == "osx":
 
 if platform == "linux":
     env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c99','-Wall'])
+    env.Append(LINKFLAGS=['-Wl,-rpath,gdsercomm/linux64'])
 
 if platform == "windows":
     if target == "debug":
