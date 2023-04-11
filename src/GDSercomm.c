@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include <sercomm/sercomm.h>
 
 const godot_gdnative_core_api_struct *api = NULL;
@@ -79,9 +80,9 @@ void GDN_EXPORT godot_nativescript_init(void *p_handle) {
 	sercomm_write_byte.method = &sercomm_write;
 	nativescript_api->godot_nativescript_register_method(p_handle, "SERCOMM", "write", attributes, sercomm_write_byte);
 
-	godot_instance_method sercomm_write_raw = { NULL, NULL, NULL };
-	sercomm_write_raw.method = &sercomm_write_raw;
-	nativescript_api->godot_nativescript_register_method(p_handle, "SERCOMM", "write_raw", attributes, sercomm_write_raw);
+	godot_instance_method sercomm_write_raw_i = { NULL, NULL, NULL };
+	sercomm_write_raw_i.method = &sercomm_write_raw;
+	nativescript_api->godot_nativescript_register_method(p_handle, "SERCOMM", "write_raw", attributes, sercomm_write_raw_i);
 
 	godot_instance_method sercomm_open_port = { NULL, NULL, NULL };
 	sercomm_open_port.method = &sercomm_open;
@@ -327,7 +328,8 @@ godot_variant sercomm_write_raw(godot_object *p_instance, void *p_method_data, v
 	int32_t r = 0;
 	godot_int i;
 	i = api->godot_variant_as_int(*p_args);
-	r = ser_write(ser, i, 1, NULL);
+	uint8_t b = i;
+	r = ser_write(ser, &i, 1, NULL);
 	api->godot_variant_new_int(&ret, (int64_t)r);
 	return ret;
 }
