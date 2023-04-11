@@ -26,7 +26,7 @@ def add_sources(sources, directory):
         if file.endswith('.c'):
             sources.append(directory + '/' + file)
 
-if platform == "osx":
+if platform == "macOS":
     env.Append(CCFLAGS = ['-g','-O3', '-arch', 'x86_64'])
     env.Append(LINKFLAGS = ['-arch', 'x86_64'])
 

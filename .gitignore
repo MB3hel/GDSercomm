@@ -9,3 +9,4 @@ src/*.obj
 src/*.os
 package/
 .sconsign.dblite
+.DS_Store
