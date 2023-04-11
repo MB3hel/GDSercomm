@@ -1,0 +1,10 @@
+godot_headers/
+sercomm/
+bin/
+lib/
+sercomm.zip
+godot_headers.zip
+src/*.o
+src/*.obj
+package/
+.sconsign.dblite

@@ -35,9 +35,9 @@ if platform == "linux":
 
 if platform == "windows":
     if target == "debug":
-        env.Append(CCFLAGS = ['-EHsc', '-D_DEBUG', '/MDd'])
+        env.Append(CCFLAGS = ['-EHsc', '-D_DEBUG', '/MTd'])
     else:
-        env.Append(CCFLAGS = ['-O2', '-EHsc', '-DNDEBUG', '/MD'])
+        env.Append(CCFLAGS = ['-O2', '-EHsc', '-DNDEBUG', '/MT'])
 
 
 # , 'include', 'include/core'

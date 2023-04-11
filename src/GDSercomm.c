@@ -17,6 +17,8 @@ godot_variant sercomm_read(godot_object *p_instance, void *p_method_data, void *
 godot_variant sercomm_write(godot_object *p_instance, void *p_method_data, void *p_user_data, int p_num_args, godot_variant **p_args);
 godot_variant sercomm_open(godot_object *p_instance, void *p_method_data, void *p_user_data, int p_num_args, godot_variant **p_args);
 godot_variant sercomm_close(godot_object *p_instance, void *p_method_data, void *p_user_data, int p_num_args, godot_variant **p_args);
+godot_variant sercomm_write_raw(godot_object *p_instance, void *p_method_data, void *p_user_data, int p_num_args, godot_variant **p_args);
+
 
 void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *p_options) {
 	api = p_options->api_struct;
@@ -76,6 +78,10 @@ void GDN_EXPORT godot_nativescript_init(void *p_handle) {
 	godot_instance_method sercomm_write_byte = { NULL, NULL, NULL };
 	sercomm_write_byte.method = &sercomm_write;
 	nativescript_api->godot_nativescript_register_method(p_handle, "SERCOMM", "write", attributes, sercomm_write_byte);
+
+	godot_instance_method sercomm_write_raw = { NULL, NULL, NULL };
+	sercomm_write_raw.method = &sercomm_write_raw;
+	nativescript_api->godot_nativescript_register_method(p_handle, "SERCOMM", "write_raw", attributes, sercomm_write_raw);
 
 	godot_instance_method sercomm_open_port = { NULL, NULL, NULL };
 	sercomm_open_port.method = &sercomm_open;
@@ -314,6 +320,19 @@ godot_variant sercomm_write(godot_object *p_instance, void *p_method_data, void 
 
 	return ret;
 }
+
+godot_variant sercomm_write_raw(godot_object *p_instance, void *p_method_data, void *p_user_data, int p_num_args, godot_variant **p_args){
+	godot_variant ret;
+	ser_t *ser = (ser_t *)p_user_data;
+	int32_t r = 0;
+	godot_int i;
+	i = api->godot_variant_as_int(*p_args);
+	r = ser_write(ser, i, 1, NULL);
+	api->godot_variant_new_int(&ret, (int64_t)r);
+	return ret;
+}
+
+
 
 godot_variant sercomm_open(godot_object *p_instance, void *p_method_data, void *p_user_data, int p_num_args, godot_variant **p_args) {
 	godot_variant ret;

@@ -1,4 +1,7 @@
 # GDSercomm
+
+For of [Superwaitsum's repo](https://github.com/Superwaitsum/GDSercomm). Forked to add a `write_raw` function.
+
 GDNative Serial port communication
 
 **Dependencies:**
@@ -17,6 +20,8 @@ Available functions:
 - `(int) read(true)`	(Read raw value)
 
 - `write(string)`
+
+- `write_raw(int)`      (Write raw value)
 
 - `get_available()`
 
