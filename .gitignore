@@ -6,5 +6,6 @@ sercomm.zip
 godot_headers.zip
 src/*.o
 src/*.obj
+src/*.os
 package/
 .sconsign.dblite
