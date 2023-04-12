@@ -1,5 +1,10 @@
 # GDSercomm
 
+# THIS HAS BUGS AND I NO LONGER USE IT / MAINTAIN IT. Recommended to use my [GDSerial](https://github.com/MB3hel/GDSerial) library instead or use the upstream version [here](https://github.com/Superwaitsum/GDSercomm).
+
+
+
+
 For of [Superwaitsum's repo](https://github.com/Superwaitsum/GDSercomm). Forked to add a `write_raw` function. Also added build scripts `build_...`.
 
 GDNative Serial port communication
